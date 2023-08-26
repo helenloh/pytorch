@@ -19,7 +19,26 @@ Converting images to tensors and normalizing them is a common preprocessing step
 
 By combining these steps, you preprocess your image data into a format that is suitable for neural networks to process efficiently and effectively. The transforms.ToTensor() function in PyTorch converts images to tensors, and applying normalization in the transformation ensures that pixel values are scaled appropriately for the network to learn effectively.
 
+Details of transform:
+    transforms.ToTensor():
+        This transformation converts the input image, which is usually in the format of a PIL (Pillow) image, into a PyTorch tensor.
+        It performs the conversion by dividing the pixel values by 255.0 (the maximum pixel value), effectively scaling the pixel values between 0 and 1.
+        The result is that each channel of the image (e.g., RGB channels) becomes a floating-point tensor with values in the range [0, 1].
 
+    transforms.Normalize((0.5,), (0.5,)):
+        This transformation further normalizes the tensor values after they have been converted by ToTensor().
+        (0.5,) indicates the mean value to subtract from each channel, and (0.5,) indicates the standard deviation to divide by.
+        The transformation performs element-wise normalization using the formula: (value - mean) / std.
+        In this case, it subtracts 0.5 from each channel and divides by 0.5, effectively shifting the range of values to be centered around 0 (mean) and scaled by 2 (standard deviation).
+
+By applying these transformations in sequence, you achieve two goals:
+
+    Input Tensor Conversion: ToTensor() converts the original image into a tensor.
+    Normalization: Normalize() further normalizes the tensor values to be centered around 0 and scaled by 2, making the data more suitable for neural network training.
+
+The result is that after applying this transformation pipeline, your image data will be in a format that is well-preprocessed for feeding into your neural network model.
+
+==========================================================================================================
 1. Class Definition:
 This code defines a class named SimpleNet that inherits from nn.Module. In PyTorch, neural network models are created as classes that inherit from the base class nn.Module. This allows you to take advantage of PyTorch's built-in functionalities for creating and managing neural network components.
 
