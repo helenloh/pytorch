@@ -1,4 +1,7 @@
 # pytorch
+# Dataset : MNIST
+https://knowyourdata-tfds.withgoogle.com/#tab=STATS&dataset=mnist
+
 # Using simple pytorch to predict MNIST
     Import the necessary libraries:
         import matplotlib.pyplot as plt for visualization.
